@@ -1,2 +1,26 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+{{#each books}}
+  <br>
+  <hr>
+  <h4>{{title}}</h4>
+  <p>{{{description}}}</p>
+  <table>
+    <tr>
+      <th>author</th>
+      <th>published</th>
+      <th><a href="/{{id}}/edit">edit</a></th>
+    </tr>
+    <tr>
+      <td>{{authors}}</td>
+      <td>{{publishedDate}}</td>
+      <td>
+        <form action="/{{id}}/delete" method="post">
+          <button type="submit">delete</button>
+        </form>
+      </td>
+    </tr>
+  </table>
+{{/each}}
+
+
+<br><br>
+<a href="/create">+ Add new book</a>

@@ -15,7 +15,7 @@ const bookSchema =  new Schema(
       type: String
     },
     authors: {
-      type: Array,
+      type: [String],
       required: true,
     },
     publisher: {
@@ -34,7 +34,7 @@ const bookSchema =  new Schema(
       type: String
     },
     categories: {
-      type: Array
+      type: [String]
     },
     averageRating: {
       type: Number
@@ -43,7 +43,7 @@ const bookSchema =  new Schema(
       type: Number
     },
     // I wonder if there are better apis to get book covers from? OpenLibrary, maybe?
-    // Setting the value to an empty object sets it as a mixed type, I think. Which means that anything can go inside it. Docs are a bit unclear tho
+    // Setting the value to an empty object sets it as a mixed type, I think?Which means that anything can go inside it. Docs are a bit unclear tho
     imageLinks: {},
     rentStatus: {
       type: Boolean,
@@ -54,11 +54,11 @@ const bookSchema =  new Schema(
       type: Date,
     },
     renter: {
-      // for now leaving it as type: String, but this will later be the objectId of the renter
+      // for now leaving it as type: String, but this will later be the objectId of the user who rents the book
       type: String
     },
     owner: {
-      // for now leaving it as type: String, but this will later be the objectId of the renter
+      // for now leaving it as type: String, but this will later be the objectId of the user who owns the book
       type: String,
       default: 'AKQA',
       required: true
