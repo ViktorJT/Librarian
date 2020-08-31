@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const Book = require('../models/Book.model');
- 
-mongoose.connect(`mongodb://localhost/${process.env.DATABASE_NAME}`, {
+const DB_NAME = 'librarian';
+
+mongoose.connect(`mongodb://localhost/${DB_NAME}`, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true

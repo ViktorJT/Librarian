@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 
+const DB_NAME = 'librarian';
+
 mongoose
-  .connect(`mongodb://localhost/${process.env.DATABASE_NAME}`, {
+  .connect(`mongodb://localhost/${DB_NAME}`, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
