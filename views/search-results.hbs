@@ -1,0 +1,35 @@
+<h1>🔎 search results</h1>
+
+{{#each items}}
+
+  <hr>
+  <br><br>
+  <h3><a href="/{{volumeInfo.title}}">{{volumeInfo.title}}</a></h3>
+  <p>{{{volumeInfo.description}}}</p>
+  <br><br>
+  <table>
+    <tr>
+      <th>rented</th>
+      <th>author</th>
+      <th>published</th>
+      <th>
+      {{!-- add if statement to check if id is already in db and render either add or disabled button (or 'remove book' button, if you are also the owner of the book?)? --}}
+        <form action="/{{id}}/create" method="post">
+          <button type="submit">add book to DB</button>
+        </form>
+      </th>
+    </tr>
+    <tr>
+      <td>{{volumeInfo.borrowStatus}}</td>
+      <td>{{volumeInfo.authors}}</td>
+      <td>{{volumeInfo.publishedDate}}</td>
+      <td>
+        {{!-- <form action="#" method="post">
+          <button type="submit">delete</button>
+        </form> --}}
+      </td>
+    </tr>
+  </table>
+  <br><br>
+
+{{/each}}

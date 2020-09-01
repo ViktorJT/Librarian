@@ -45,21 +45,22 @@ const bookSchema =  new Schema(
     // I wonder if there are better apis to get book covers from? OpenLibrary, maybe?
     // Setting the value to an empty object sets it as a mixed type, I think?Which means that anything can go inside it. Docs are a bit unclear tho
     imageLinks: {},
-    rentStatus: {
+    borrowStatus: {
       type: Boolean,
       default: false,
       required: true
     },
-    rentDate: {
+    borrowDate: {
       type: Date,
     },
-    renter: {
+    borrower: {
       // for now leaving it as type: String, but this will later be the objectId of the user who rents the book
       type: String
     },
     owner: {
       // for now leaving it as type: String, but this will later be the objectId of the user who owns the book
       type: String,
+      // change this later, should default to whoever is logged in
       default: 'AKQA',
       required: true
     }

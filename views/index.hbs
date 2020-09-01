@@ -1,26 +1,35 @@
 {{#each books}}
-  <br>
   <hr>
-  <h4>{{title}}</h4>
+  <br><br>
+  <h3><a href="/{{title}}">{{title}}</a></h3>
   <p>{{{description}}}</p>
+  <br><br>
   <table>
     <tr>
+      <th>rented</th>
       <th>author</th>
       <th>published</th>
-      <th><a href="/{{id}}/edit">edit</a></th>
+      <th>
+        <form action="/{{_id}}/borrow" method="post">
+          <button type="submit">borrow</button>
+        </form>
+      </th>
     </tr>
     <tr>
+      <td>{{borrowStatus}}</td>
       <td>{{authors}}</td>
       <td>{{publishedDate}}</td>
       <td>
-        <form action="/{{id}}/delete" method="post">
+        {{!-- only owners can delete their books, make a check to see if owner === book owner --}}
+        <form action="/{{_id}}/delete" method="post">
           <button type="submit">delete</button>
         </form>
       </td>
     </tr>
   </table>
+  <br><br>
 {{/each}}
 
 
 <br><br>
-<a href="/create">+ Add new book</a>
+<a href="/add">+ Add new book</a>

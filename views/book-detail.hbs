@@ -1,0 +1,24 @@
+
+{{!-- Can't get the dot notation to work when I'm passing the data to the route (in the other file), so the each here is kinda gross. refactor later --}}
+
+{{#each book}}
+
+<h1>{{title}}</h1>
+
+<br><br>
+
+<p>{{{this}}}</p>
+
+<br><br>
+
+<form action="/{{_id}}/borrow" method="post">
+  <button type="submit">borrow</button>
+</form>
+
+<br><br>
+
+<form action="/{{_id}}/delete" method="post">
+  <button type="submit">delete</button>
+</form>
+
+{{/each}}
