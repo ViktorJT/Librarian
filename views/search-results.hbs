@@ -1,35 +1,48 @@
-<h1>🔎 search results</h1>
+<section class="search">
 
-{{#each items}}
+  <form action="/q" method="GET" id="searchForm">
+    <input name="search" type="text" autocomplete="off" value="{{[1]}}"/>
+    <button type="submit" class="button">search</button>
+  </form>
 
-  <hr>
-  <br><br>
-  <h3><a href="/{{volumeInfo.title}}">{{volumeInfo.title}}</a></h3>
-  <p>{{{volumeInfo.description}}}</p>
-  <br><br>
-  <table>
-    <tr>
-      <th>rented</th>
-      <th>author</th>
-      <th>published</th>
-      <th>
-      {{!-- add if statement to check if id is already in db and render either add or disabled button (or 'remove book' button, if you are also the owner of the book?)? --}}
-        <form action="/{{id}}/create" method="post">
-          <button type="submit">add book to DB</button>
-        </form>
-      </th>
-    </tr>
-    <tr>
-      <td>{{volumeInfo.borrowStatus}}</td>
-      <td>{{volumeInfo.authors}}</td>
-      <td>{{volumeInfo.publishedDate}}</td>
-      <td>
-        {{!-- <form action="#" method="post">
-          <button type="submit">delete</button>
-        </form> --}}
-      </td>
-    </tr>
-  </table>
-  <br><br>
+{{#each [0].items}}
+  <div class="result">
+    <picture>
+      {{#if volumeInfo.imageLinks.small}}
+        <img src="{{volumeInfo.imageLinks.small}}" alt="{{title}}">
+      {{else if volumeInfo.imageLinks.thumbnail}}
+        <img src="{{volumeInfo.imageLinks.thumbnail}}" alt="{{title}}">
+      {{else if volumeInfo.imageLinks.smallThumbnail}}
+        <img src="{{volumeInfo.imageLinks.smallThumbnail}}" alt="{{title}}">
+      {{else}}
+        <div class="missing">
+            <p>no image available</p>
+        </div>
+      {{/if}}
+    </picture>
+    <div class="content">
+      <h3>{{volumeInfo.title}}</h3>
+      <p>{{{volumeInfo.description}}}</p>
+      <table>
+        <tr>
+          <th>author</th>
+          <th>published</th>
+        </tr>
+        <tr>
+          <td>{{volumeInfo.authors}}</td>
+          <td>{{volumeInfo.publishedDate}}</td>
+        </tr>
+      </table>
+    </div>
+    <form action="/{{id}}/create" method="post">
+      {{!-- THIS CAN BE REFACTORED --}}
+      {{!-- CREATE HIDDEN FIELDS FOR EVERY VALUE, AND PASS IT ON TO THE SUBMIT WITH THE REQ.BODY --}}
+      {{!-- <input type="hidden" name="title" value="{{volume.info.title}}"> --}}
+      {{!-- ETC. ETC. ETC. --}}
+      <button type="submit" class="button add">add book</button>
+    </form>
 
+  </div>
 {{/each}}
+
+</section>

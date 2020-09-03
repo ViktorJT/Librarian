@@ -4,16 +4,19 @@ const Book = require('../models/Book.model');
 const mongoose = require('mongoose');
 const axios = require('axios').default;
 
+router.get('/add', (_, res) => res.render('add'));
+
 router.get('/q', (req, res) => {
   const { search } = req.query;
   axios
     .get(`https://www.googleapis.com/books/v1/volumes/?q=intitle:${search}&printType=books&fields=items(id,volumeInfo(title,subtitle,authors,publisher,publishedDate,description,industryIdentifiers,categories,averageRating,ratingsCount,imageLinks))&key=${process.env.API_KEY}`)
     .then(results => {
-      res.render('search-results', results.data)
+      res.render('search-results', [ results.data, search ])
   }).catch(err => console.error(err))
 });
 
 router.post('/:id/create', (req, res) => {
+  // ! refactor to use hidden fields later (avoids this second API call!)
   const { id } = req.params;
   axios
     .get(`https://www.googleapis.com/books/v1/volumes/${id}?printType=books&fields=id,volumeInfo(title,subtitle,authors,publisher,publishedDate,description,industryIdentifiers,categories,averageRating,ratingsCount,imageLinks)&key=${process.env.API_KEY}`)
@@ -33,6 +36,7 @@ router.post('/:id/create', (req, res) => {
       })
       .then(() => {
         console.log(`book with id: ${id} added to DB`);
+        // ! should I disconnect here, like we do in the seeds file?
         // mongoose.disconnect();
       })
       .catch(err => console.error(`error adding book with id: ${id} to DB`))

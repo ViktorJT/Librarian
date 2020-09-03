@@ -1,0 +1,28 @@
+<br><br>
+
+<a href="/sign-up">signup</a>
+<a href="/log-in"><b>login</b></a>
+
+<br><br>
+
+<form action="/log-in" method="POST">
+  <div>
+    <label for="username">Username</label>
+    <input type="text" name="username">
+  </div>
+  <br><br>
+  <div>
+    <label for="password">Password</label>
+    <input type="password" name="password">
+  </div>
+  <br><br>
+  {{#if errorMessage}}
+    <div class="error-message">{{errorMessage}}</div>
+  {{/if}}
+ 
+  <div>
+    <button>Log in</button>
+  </div>
+
+  <br><br>
+</form>

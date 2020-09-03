@@ -3,44 +3,157 @@
 }
 
 body {
-  padding: 50px;
-  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+  background-color: #e5c600;
+  font-family: 'roboto';
+  margin: 0;
+}
+
+.overview .wrapper {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.bookCard {
+  box-shadow: inset 0px -40px 40px -40px rgba(0, 0, 0, 0.24);
+  flex: 1 1 320px;
+  height: 400px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.bookCard .imgwrapper img,
+.bookCard .imgwrapper div {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  z-index: -999;
+  width: 320px;
+  transition: all 0.32s;
+  transform: translateY(6rem);
+  box-shadow: 0 0.2px 0.2px -8px rgba(0, 0, 0, 0.042), 0 0.5px 0.6px -8px rgba(0, 0, 0, 0.062),
+    0 0.9px 1.2px -8px rgba(0, 0, 0, 0.077), 0 1.3px 2.1px -8px rgba(0, 0, 0, 0.089),
+    0 1.9px 3.4px -8px rgba(0, 0, 0, 0.1), 0 2.7px 5.3px -8px rgba(0, 0, 0, 0.111),
+    0 3.8px 8.1px -8px rgba(0, 0, 0, 0.123), 0 5.5px 12.8px -8px rgba(0, 0, 0, 0.138),
+    0 8.4px 21.2px -8px rgba(0, 0, 0, 0.158), 0 15px 40px -8px rgba(0, 0, 0, 0.2);
+}
+
+.bookCard .imgwrapper:hover img,
+.bookCard .imgwrapper:hover div {
+  transform: translateY(2rem);
+  box-shadow: 0 1px 0.2px -8px rgba(0, 0, 0, 0.084), 0 2.2px 0.6px -8px rgba(0, 0, 0, 0.124),
+    0 3.7px 1.2px -8px rgba(0, 0, 0, 0.153), 0 5.6px 2.1px -8px rgba(0, 0, 0, 0.177),
+    0 8px 3.4px -8px rgba(0, 0, 0, 0.2), 0 11.3px 5.3px -8px rgba(0, 0, 0, 0.223),
+    0 16.1px 8.1px -8px rgba(0, 0, 0, 0.247), 0 23.4px 12.8px -8px rgba(0, 0, 0, 0.276),
+    0 36px 21.2px -8px rgba(0, 0, 0, 0.316), 0 64px 40px -8px rgba(0, 0, 0, 0.4);
 }
 
 nav {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
   justify-content: space-between;
   align-items: center;
-}
-
-h1 {
-  flex: 1 0 240px;
-}
-
-input {
-  flex: 0 1 400px;
+  padding: 4rem 0;
 }
 
 a {
-  color: #00b7ff;
+  color: #333847;
   text-decoration: none;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
+.missing {
+  padding: 4rem;
+  width: 320px;
+  height: 500px;
+  background-color: #333847;
+  text-align: center;
+  color: white;
 }
 
-table {
-  width: 100%;
+.container {
+  background: url(../images/add.svg) no-repeat center 8rem;
+  background-size: 4rem;
+  padding: 4rem;
+  width: 320px;
+  height: 500px;
+  text-align: center;
+  color: white;
+}
+
+#addBook .imgwrapper {
+  display: grid;
+  place-items: center;
+  width: 320px;
+}
+
+#addBook .imgwrapper img {
+  box-shadow: none;
+}
+
+h2 {
+  margin: 0;
+}
+
+.search {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 2rem;
+}
+
+input {
+  color: inherit;
+  appearance: none;
+  background-color: #e5c600;
+  cursor: text;
+  font: inherit;
+  border: none;
+  font-size: xx-large;
+  max-width: 800px;
+  min-width: 480px;
+}
+
+input:focus {
+  outline: none;
+}
+
+#searchForm {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #333847;
+  display: flex;
+}
+
+.button {
+  background-color: #e5c600;
+  color: #333847;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border: 1px solid #333847;
+  border-radius: 4rem;
+  cursor: pointer;
+}
+
+.button:hover {
+  color: #e5c600;
+  background-color: #333847;
+}
+
+.result {
+  display: flex;
   text-align: left;
+  gap: 1rem;
 }
 
-th {
-  padding-bottom: 1rem;
+.result .content {
+  width: 400px;
 }
 
-h4 {
-  color: darkgray;
+.bookCard.borrowed .imgwrapper img,
+.bookCard.borrowed .imgwrapper div {
+  opacity: 0.4;
+  box-shadow: none;
 }

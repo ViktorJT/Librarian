@@ -10,11 +10,12 @@
   <body>
 
     <nav>
-      <h1><a href="/">{{title}}</a></h1>
-      <form action="/q" method="GET">
-        <input name="search" type="text" placeholder="find books…"/>
-        <button type="submit">search</button>
-      </form>
+      <div>
+        <a href="/"><img src="/images/logo.svg" alt=""></a>
+        {{#if login}}
+          <a href="/log-out">log out</a>
+        {{/if}}
+      </div>
     </nav>
 
 

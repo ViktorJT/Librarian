@@ -23,6 +23,12 @@ router.post('/:id/delete', (req, res) => {
 });
 
 router.post('/:id/borrow', (req, res) => {
+
+  if (!req.user) {
+    res.redirect('/log-in'); // not logged-in
+    return;
+  }
+
   const { id } = req.params;
   Book.findById(id)
     .then(book => {

@@ -1,35 +1,35 @@
-{{#each books}}
-  <hr>
-  <br><br>
-  <h3><a href="/{{title}}">{{title}}</a></h3>
-  <p>{{{description}}}</p>
-  <br><br>
-  <table>
-    <tr>
-      <th>rented</th>
-      <th>author</th>
-      <th>published</th>
-      <th>
-        <form action="/{{_id}}/borrow" method="post">
-          <button type="submit">borrow</button>
-        </form>
-      </th>
-    </tr>
-    <tr>
-      <td>{{borrowStatus}}</td>
-      <td>{{authors}}</td>
-      <td>{{publishedDate}}</td>
-      <td>
-        {{!-- only owners can delete their books, make a check to see if owner === book owner --}}
-        <form action="/{{_id}}/delete" method="post">
-          <button type="submit">delete</button>
-        </form>
-      </td>
-    </tr>
-  </table>
-  <br><br>
-{{/each}}
-
-
-<br><br>
-<a href="/add">+ Add new book</a>
+<section class="overview">
+  <div class="wrapper">
+  {{#each books}}
+    <div class="bookCard {{#if borrowStatus}}borrowed{{/if}}">
+      <a href="/{{title}}" class="imgwrapper">
+        {{#if imageLinks.extraLarge}}
+          <img src="{{imageLinks.extraLarge}}" alt="{{title}}">
+        {{else if imageLinks.large}}
+          <img src="{{imageLinks.large}}" alt="{{title}}">
+        {{else if imageLinks.medium}}
+          <img src="{{imageLinks.medium}}" alt="{{title}}">
+        {{else if imageLinks.small}}
+          <img src="{{imageLinks.small}}" alt="{{title}}">
+        {{else if imageLinks.thumbnail}}
+          <img src="{{imageLinks.thumbnail}}" alt="{{title}}">
+        {{else if imageLinks.smallThumbnail}}
+          <img src="{{imageLinks.smallThumbnail}}" alt="{{title}}">
+        {{else}}
+          <div class="missing">
+            <h2>{{title}}</h2>
+            {{#if subtitle}}
+              <p>{{subtitle}}</p>
+            {{/if}}
+          </div>
+        {{/if}}
+      </a>
+    </div>
+  {{/each}}
+    <div class="bookCard" id="addBook">
+      <a href="/add" class="imgwrapper">
+        <div class="container"></div>
+      </a>
+    </div>
+  </div>
+</section>
