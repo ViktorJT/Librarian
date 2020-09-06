@@ -22,17 +22,21 @@
     </picture>
     <div class="content">
       <h3>{{volumeInfo.title}}</h3>
-      <p>{{{volumeInfo.description}}}</p>
       <table>
         <tr>
-          <th>author</th>
-          <th>published</th>
+          <th>Author</th>
+          {{!-- ! FIX THIS LATER --}}
+          <th></th><th></th>
+          <th>Published</th>
         </tr>
         <tr>
           <td>{{volumeInfo.authors}}</td>
+          {{!-- ! FIX THIS LATER --}}
+          <td></td><td></td>
           <td>{{volumeInfo.publishedDate}}</td>
         </tr>
       </table>
+      <p>{{{volumeInfo.description}}}</p>
     </div>
     <form action="/{{id}}/create" method="post">
       {{!-- THIS CAN BE REFACTORED --}}
@@ -43,6 +47,7 @@
     </form>
 
   </div>
+
 {{/each}}
 
 </section>

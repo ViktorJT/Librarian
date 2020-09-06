@@ -2,12 +2,13 @@ const mongoose = require('mongoose');
 
 const DB_NAME = 'librarian';
 
+// 
+
 mongoose
-  .connect(`mongodb://localhost/${DB_NAME}`, {
+  .connect(`${process.env.MONGODB_URI}`, {
     useCreateIndex: true,
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    // useFindAndModify: false ? forgot which is which, but there could be a deprecation error for this due to something with a MongoDB method
+    useUnifiedTopology: true
   })
   .then(x =>
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)

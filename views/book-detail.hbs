@@ -1,24 +1,45 @@
+{{log this}}
 
-{{!-- Can't get the dot notation to work when I'm passing the data to the route (in the other file), so the each here is kinda gross. refactor later --}}
+<section class="detail">
+  {{#each book}}
+      {{#if imageLinks.medium}}
+        {{!-- <img src="{{imageLinks.extraLarge}}" alt="{{title}}">
+      {{else if imageLinks.large}}
+        <img src="{{imageLinks.large}}" alt="{{title}}">
+      {{else if imageLinks.medium}} --}}
+        <img src="{{imageLinks.medium}}" alt="{{title}}">
+      {{else if imageLinks.small}}
+        <img src="{{imageLinks.small}}" alt="{{title}}">
+      {{else if imageLinks.thumbnail}}
+        <img src="{{imageLinks.thumbnail}}" alt="{{title}}">
+      {{else if imageLinks.smallThumbnail}}
+        <img src="{{imageLinks.smallThumbnail}}" alt="{{title}}">
+      {{else}}
+        <div class="missing">
+            <p>no image available</p>
+        </div>
+      {{/if}}
 
-{{#each book}}
+    <div class="content">
 
-<h1>{{title}}</h1>
+      <h1>{{title}}</h1>
+      <p><b>By: </b>{{authors}}</p>
+      <p>{{{description}}}</p>
+      {{!-- <p>{{publishedDate}}</p>
+      <p>{{averageRating}}</p>
+      <p>{{ratingsCount}}</p> --}}
 
-<br><br>
+      <div class="controls">
+        <form action="/{{_id}}/borrow" method="post">
+          <button type="submit" class="button {{#if borrowStatus}}borrowedBtn{{/if}}" >{{#if borrowStatus}}return book{{else}}borrow{{/if}}</button>
+        </form>
+{{!-- 
+        <form action="/{{_id}}/delete" method="post">
+          <button class="button" type="submit">delete</button>
+        </form> --}}
+      </div>
 
-<p>{{{this}}}</p>
+    </div>
 
-<br><br>
-
-<form action="/{{_id}}/borrow" method="post">
-  <button type="submit">borrow</button>
-</form>
-
-<br><br>
-
-<form action="/{{_id}}/delete" method="post">
-  <button type="submit">delete</button>
-</form>
-
-{{/each}}
+  {{/each}}
+</section>

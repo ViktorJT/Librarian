@@ -1,2 +1,2 @@
-# Librarian
+# library
 Simple book tracker

@@ -1,28 +1,33 @@
-<br><br>
+<section class="auth">
 
-<a href="/sign-up">signup</a>
-<a href="/log-in"><b>login</b></a>
+  <div class="toggle">
 
-<br><br>
+    <a href="/sign-up" class="button">sign up</a>
+    <a href="/log-in" class="button active">login</a>
 
-<form action="/log-in" method="POST">
-  <div>
-    <label for="username">Username</label>
-    <input type="text" name="username">
-  </div>
-  <br><br>
-  <div>
-    <label for="password">Password</label>
-    <input type="password" name="password">
-  </div>
-  <br><br>
-  {{#if errorMessage}}
-    <div class="error-message">{{errorMessage}}</div>
-  {{/if}}
- 
-  <div>
-    <button>Log in</button>
   </div>
 
-  <br><br>
-</form>
+  <form action="/log-in" method="POST">
+
+    <div class="authInput">
+      <div class="user">
+        <label for="username">Username</label>
+        <input type="text" name="username" autocomplete="off">
+      </div>
+
+      <div class="pass">
+        <label for="password">Password</label>
+        <input type="password" name="password" autocomplete="off">
+      </div>
+
+      {{#if errorMessage}}
+        <div class="error-message">{{errorMessage}}</div>
+      {{/if}}
+  
+      <button class="button">Log in</button>
+    </div>
+
+  </form>
+
+</section>
+

@@ -98,7 +98,7 @@ h2 {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  gap: 2rem;
+  gap: 4rem;
 }
 
 input {
@@ -137,6 +137,17 @@ input:focus {
   cursor: pointer;
 }
 
+.borrowedBtn {
+  background-color: #333847;
+  color: #e5c600;
+  opacity: 0.8;
+}
+
+.button.active {
+  color: #e5c600;
+  background-color: #333847;
+}
+
 .button:hover {
   color: #e5c600;
   background-color: #333847;
@@ -145,7 +156,7 @@ input:focus {
 .result {
   display: flex;
   text-align: left;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .result .content {
@@ -154,6 +165,76 @@ input:focus {
 
 .bookCard.borrowed .imgwrapper img,
 .bookCard.borrowed .imgwrapper div {
+  transform: translateY(10rem);
   opacity: 0.4;
   box-shadow: none;
+}
+
+table {
+  width: 100%;
+}
+
+section {
+  margin-bottom: 4rem;
+}
+
+.detail {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.detail img,
+.detail picture div {
+  flex: 0 0 320px;
+  max-width: 320px;
+}
+
+.detail .content {
+  flex: 0 0 560px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+}
+
+.detail .content > * {
+  margin: 0;
+}
+
+.detail .content .controls {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.auth {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.authInput {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 2rem;
+}
+
+.user,
+.pass {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+}
+
+.authInput input {
+  background-color: #c9ae00;
+}
+
+.auth .toggle {
+  text-align: center;
+  display: flex;
+  gap: 1rem;
 }

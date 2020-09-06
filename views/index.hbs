@@ -3,11 +3,11 @@
   {{#each books}}
     <div class="bookCard {{#if borrowStatus}}borrowed{{/if}}">
       <a href="/{{title}}" class="imgwrapper">
-        {{#if imageLinks.extraLarge}}
-          <img src="{{imageLinks.extraLarge}}" alt="{{title}}">
+        {{#if imageLinks.medium}}
+          {{!-- <img src="{{imageLinks.extraLarge}}" alt="{{title}}">
         {{else if imageLinks.large}}
           <img src="{{imageLinks.large}}" alt="{{title}}">
-        {{else if imageLinks.medium}}
+        {{else if imageLinks.medium}} --}}
           <img src="{{imageLinks.medium}}" alt="{{title}}">
         {{else if imageLinks.small}}
           <img src="{{imageLinks.small}}" alt="{{title}}">

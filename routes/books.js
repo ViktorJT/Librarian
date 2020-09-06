@@ -34,6 +34,7 @@ router.post('/:id/borrow', (req, res) => {
     .then(book => {
       book.borrowStatus = !book.borrowStatus;
       book.save();
+      req.logout();
       res.redirect('/');
     })
     .catch(err => console.error(`error borrowing book: ${err}`))

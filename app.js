@@ -10,7 +10,6 @@ const logger       = require('morgan');
 const path         = require('path');
 const session      = require('express-session');
 const MongoStore   = require('connect-mongo')(session);
-
 const bcrypt       = require('bcrypt');
 const passport     = require('passport');
 const LocalStrategy= require('passport-local').Strategy;
@@ -85,10 +84,10 @@ app.use(cookieParser());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.png')));
 
 // default value for title local
-app.locals.title = 'Librarian';
+app.locals.title = 'Library';
 
 const auth = require('./routes/auth');
 const search = require('./routes/search');
