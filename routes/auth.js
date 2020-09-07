@@ -51,17 +51,6 @@ router.post('/log-in', passport.authenticate('local', {
   failureRedirect: '/log-in'
 }));
 
-// ! JUST TO PROVE THAT THE AUTH ROUTE WORKS, REMOVE LATER
-router.get("/private-page", (req, res) => {
-  if (!req.user) {
-    res.redirect('/log-in'); // not logged-in
-    return;
-  }
- 
-  // ok, req.user is defined
-  res.render("private", { user: req.user });
-});
-
 router.get('/log-out', (req, res) => {
   req.logout();
   res.redirect('/');

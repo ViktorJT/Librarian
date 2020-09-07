@@ -8,9 +8,18 @@
 {{#each [0].items}}
   <div class="result">
     <picture>
-      {{#if volumeInfo.imageLinks.small}}
+      {{!-- {{#if volumeInfo.imageLinks.small}}
         <img src="{{volumeInfo.imageLinks.small}}" alt="{{title}}">
       {{else if volumeInfo.imageLinks.thumbnail}}
+        <img src="{{volumeInfo.imageLinks.thumbnail}}" alt="{{title}}">
+      {{else if volumeInfo.imageLinks.smallThumbnail}}
+        <img src="{{volumeInfo.imageLinks.smallThumbnail}}" alt="{{title}}">
+      {{else}}
+        <div class="missing">
+            <p>no image available</p>
+        </div>
+      {{/if}} --}}
+      {{#if volumeInfo.imageLinks.thumbnail}}
         <img src="{{volumeInfo.imageLinks.thumbnail}}" alt="{{title}}">
       {{else if volumeInfo.imageLinks.smallThumbnail}}
         <img src="{{volumeInfo.imageLinks.smallThumbnail}}" alt="{{title}}">

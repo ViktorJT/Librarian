@@ -10,11 +10,17 @@
   <body>
 
     <nav>
-      <div>
+      <div class="login">
+
         <a href="/"><img src="/images/logo.svg" alt=""></a>
-        {{!-- {{#if login}}
-          <a href="/log-out">log out</a>
-        {{/if}} --}}
+          <div class="authToggle">
+            {{#if login}}
+              <a href="/log-out" class="button active">log out</a>
+            {{else}}
+              <a href="/sign-up" class="button">sign up</a>
+              <a href="/log-in" class="button">log in</a>
+            {{/if}}
+          </div>
       </div>
     </nav>
 

@@ -238,3 +238,24 @@ section {
   display: flex;
   gap: 1rem;
 }
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-flow: column nowrap;
+}
+
+.authToggle {
+  text-align: center;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.authToggle a.button {
+  width: 120px;
+}
