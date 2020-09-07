@@ -17,13 +17,13 @@
             {{#if login}}
               <a href="/log-out" class="button active">log out</a>
             {{else}}
-              <a href="/sign-up" class="button">sign up</a>
-              <a href="/log-in" class="button">log in</a>
+              
+              <a href="/sign-up" class="button {{#if signupActive}}active{{/if}}">sign up</a>
+              <a href="/log-in" class="button {{#if loginActive}}active{{/if}}">log in</a>
             {{/if}}
           </div>
       </div>
     </nav>
-
 
     {{{body}}}
 

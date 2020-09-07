@@ -69,6 +69,7 @@ passport.use(new LocalStrategy(
 
 // this should allow me to find a login variable in the locals to hide/show 
 app.use(function (req, res, next) {
+  res.locals.url = req.originalUrl;
   res.locals.login = req.isAuthenticated();
   console.log(`authenticated?: ${res.locals.login}`);
   next();

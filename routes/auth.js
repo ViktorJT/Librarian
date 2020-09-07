@@ -6,7 +6,7 @@ const passport = require('passport');
 const bcrypt = require('bcrypt');
 const bcryptSalt = 10;
 
-router.get('/sign-up', (_, res) => res.render('sign-up'))
+router.get('/sign-up', (_, res) => res.render('sign-up', {signupActive: true}))
 
 router.post('/sign-up', (req, res, next) => {
   const { username, password } = req.body;
@@ -44,7 +44,7 @@ router.post('/sign-up', (req, res, next) => {
 
 });
 
-router.get('/log-in', (_, res) => res.render('login'));
+router.get('/log-in', (_, res) => res.render('login', {loginActive: true}));
 
 router.post('/log-in', passport.authenticate('local', {
   successRedirect: '/',
