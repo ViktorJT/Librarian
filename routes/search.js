@@ -21,6 +21,19 @@ router.post('/:id/create', (req, res) => {
   axios
     .get(`https://www.googleapis.com/books/v1/volumes/${id}?printType=books&fields=id,volumeInfo(title,subtitle,authors,publisher,publishedDate,description,industryIdentifiers,categories,averageRating,ratingsCount,imageLinks)&key=${process.env.API_KEY}`)
     .then(results => {
+
+
+      // convert http to https
+
+      let imageLinks = Object.entries(results.data.volumeInfo.imageLinks);
+
+      imageLinks.forEach(url => {
+        url[1] = url[1].replace('http:','https:');
+      })
+
+      results.data.volumeInfo.imageLinks = Object.fromEntries(imageLinks);
+
+
       Book.create({
         id: results.data.id,
         title: results.data.volumeInfo.title,
@@ -36,8 +49,6 @@ router.post('/:id/create', (req, res) => {
       })
       .then(() => {
         console.log(`book with id: ${id} added to DB`);
-        // ! should I disconnect here, like we do in the seeds file?
-        // mongoose.disconnect();
       })
       .catch(err => console.error(`error adding book with id: ${id} to DB`))
       .finally(res.redirect('/'))
