@@ -24,7 +24,7 @@ router.post('/:id/delete', (req, res) => {
 
 router.post('/:id/borrow', (req, res) => {
 
-  if (!req.user) {
+  if (!req.user || !res.locals.login) {
     res.redirect('/log-in'); // not logged-in
     return;
   }
@@ -33,6 +33,7 @@ router.post('/:id/borrow', (req, res) => {
   Book.findById(id)
     .then(book => {
       book.borrowStatus = !book.borrowStatus;
+      book.borrower = req.user.username;
       book.save();
       req.logout();
       res.redirect('/');

@@ -36,7 +36,7 @@ router.post('/sign-up', (req, res, next) => {
         .save()
         .then(user => {
           console.log(`new user created: ${user}`);
-          res.redirect('/')
+          res.redirect('/');
         })
         .catch(err => console.error(`error while saving user: ${err}`))
 
