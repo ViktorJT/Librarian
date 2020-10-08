@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: #e5c600;
+  background-color: #ffdc00;
   font-family: 'roboto';
   margin: 0;
 }
@@ -104,7 +104,7 @@ h2 {
 input {
   color: inherit;
   appearance: none;
-  background-color: #e5c600;
+  background-color: #ffdc00;
   cursor: text;
   font: inherit;
   border: none;
@@ -124,7 +124,7 @@ input:focus {
 }
 
 .button {
-  background-color: #e5c600;
+  background-color: #ffdc00;
   color: #333847;
   padding: 15px 32px;
   text-align: center;
@@ -139,17 +139,17 @@ input:focus {
 
 .borrowedBtn {
   background-color: #333847;
-  color: #e5c600;
+  color: #ffdc00;
   opacity: 0.8;
 }
 
 .button.active {
-  color: #e5c600;
+  color: #ffdc00;
   background-color: #333847;
 }
 
 .button:hover {
-  color: #e5c600;
+  color: #ffdc00;
   background-color: #333847;
 }
 
