@@ -11,6 +11,22 @@ router.get('/q', (req, res) => {
   axios
     .get(`https://www.googleapis.com/books/v1/volumes/?q=intitle:${search}&printType=books&fields=items(id,volumeInfo(title,subtitle,authors,publisher,publishedDate,description,industryIdentifiers,categories,averageRating,ratingsCount,imageLinks))&key=${process.env.API_KEY}`)
     .then(results => {
+      // console.log(results.data.items); // array of objects
+
+      let searchResults = results.data.items;
+
+      searchResults.forEach(result => {
+        let imageLinks = Object.entries(result.volumeInfo.imageLinks);
+
+        imageLinks.forEach(url => {
+          url[1] = url[1].replace('http:','https:');
+        })
+
+        result.volumeInfo.imageLinks = Object.fromEntries(imageLinks);
+  
+      })
+
+
       res.render('search-results', [ results.data, search ])
   }).catch(err => console.error(err))
 });
